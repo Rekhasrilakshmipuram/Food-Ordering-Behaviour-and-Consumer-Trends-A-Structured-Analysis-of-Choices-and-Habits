@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}About — FoodPulse Analytics{% endblock %}
+{% block meta_desc %}Learn about the FoodPulse Analytics project — food delivery data analysis powered by Tableau and Flask.{% endblock %}
+
+{% block content %}
+<!-- About Hero -->
+<section class="about-hero">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">About the Project</span>
+      <h1 class="heading-display heading-lg">
+        Behind <span class="text-gradient">FoodPulse</span> Analytics
+      </h1>
+      <p>A deep dive into food delivery data — uncovering patterns, trends, and actionable insights.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="about-content">
+      <!-- Left Column -->
+      <div class="about-card glass-card reveal">
+        <h3>🎯 Project Overview</h3>
+        <p>
+          FoodPulse Analytics is a comprehensive food delivery data analysis project. We analyzed
+          order data from a major food delivery platform to extract insights about delivery performance,
+          customer preferences, restaurant metrics, and operational efficiency.
+        </p>
+        <p style="margin-top: 1rem;">
+          The project combines interactive Tableau dashboards with a modern Flask web application,
+          making data exploration intuitive and visually engaging.
+        </p>
+      </div>
+
+      <!-- Right Column -->
+      <div class="about-card glass-card reveal">
+        <h3>📊 Key Metrics Analyzed</h3>
+        <ul>
+          <li>Order volume & revenue trends over time</li>
+          <li>Average delivery time by restaurant & cuisine</li>
+          <li>Customer satisfaction ratings distribution</li>
+          <li>Peak ordering hours & day-of-week patterns</li>
+          <li>Cuisine type popularity & revenue share</li>
+          <li>Restaurant performance benchmarking</li>
+        </ul>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="about-card glass-card reveal">
+        <h3>⚙️ Technology Stack</h3>
+        <ul>
+          <li><strong>Visualization:</strong> Tableau Public</li>
+          <li><strong>Backend:</strong> Python Flask</li>
+          <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
+          <li><strong>Embedding:</strong> Tableau Embedding API v3</li>
+          <li><strong>Data Source:</strong> FoodHub Order Dataset</li>
+          <li><strong>Design:</strong> Glassmorphism, Dark Theme</li>
+        </ul>
+      </div>
+
+      <!-- Data Source -->
+      <div class="about-card glass-card reveal">
+        <h3>📁 Data Source</h3>
+        <p>
+          The analysis is based on the FoodHub order dataset containing delivery records with
+          attributes including restaurant name, cuisine type, order cost, delivery time,
+          customer rating, and order timestamps.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="{{ url_for('dashboard') }}" class="btn btn-primary" style="display: inline-flex;">
+            Explore the Data →
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

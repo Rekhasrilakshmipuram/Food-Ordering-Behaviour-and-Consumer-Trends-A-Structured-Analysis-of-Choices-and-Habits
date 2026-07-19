@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — FoodPulse Analytics{% endblock %}
+{% block meta_desc %}Interactive food delivery analytics dashboard — explore delivery times, restaurant performance, and order trends with Tableau.{% endblock %}
+
+{% block content %}
+<div class="embed-wrapper">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span class="sep">›</span>
+      <span>Dashboard</span>
+    </nav>
+
+    <!-- Header -->
+    <div class="embed-header reveal">
+      <h1 class="heading-display heading-lg">
+        <span class="text-gradient">Interactive</span> Dashboard
+      </h1>
+      <p>Explore delivery performance, restaurant analytics, and order trends — click, filter, and drill down into the data.</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="tabs reveal">
+      <a href="{{ url_for('dashboard') }}" class="tab active">📊 Dashboard</a>
+      <a href="{{ url_for('story') }}" class="tab">📖 Story</a>
+    </div>
+
+    <!-- Embed Container -->
+    <div class="embed-container reveal" id="embedContainer">
+      <!-- Window chrome -->
+      <div class="embed-toolbar">
+        <div class="embed-toolbar-left">
+          <span class="toolbar-dot red"></span>
+          <span class="toolbar-dot yellow"></span>
+          <span class="toolbar-dot green"></span>
+          <span class="toolbar-title">Food Delivery Analysis — Dashboard</span>
+        </div>
+        <div class="embed-toolbar-right">
+          <button class="toolbar-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">⛶ Fullscreen</button>
+          <a class="toolbar-btn" href="https://public.tableau.com/app/profile/{{ tableau_profile }}/viz/Food_Delivery_Analysis_17840324425720/Dashboard1" target="_blank" rel="noopener">↗ Open in Tableau</a>
+        </div>
+      </div>
+
+      <!-- Loading overlay -->
+      <div class="embed-loading" id="embedLoading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading dashboard…</p>
+      </div>
+
+      <!-- Tableau Viz -->
+      <tableau-viz
+        id="tableauDashboard"
+        src="{{ tableau_url }}"
+        width="100%"
+        height="800"
+        toolbar="bottom"
+        hide-tabs>
+      </tableau-viz>
+    </div>
+
+    <!-- Info cards -->
+    <div class="info-cards reveal">
+      <div class="info-card glass-card">
+        <div class="info-card-icon orange">🖱️</div>
+        <div>
+          <h4>Click & Filter</h4>
+          <p>Click on any chart element to cross-filter the entire dashboard</p>
+        </div>
+      </div>
+      <div class="info-card glass-card">
+        <div class="info-card-icon teal">📱</div>
+        <div>
+          <h4>Responsive</h4>
+          <p>Works on desktop, tablet, and mobile devices</p>
+        </div>
+      </div>
+      <div class="info-card glass-card">
+        <div class="info-card-icon purple">🔄</div>
+        <div>
+          <h4>Reset Filters</h4>
+          <p>Use the toolbar to undo or reset all applied filters</p>
+        </div>
+      </div>
+      <div class="info-card glass-card">
+        <div class="info-card-icon pink">📥</div>
+        <div>
+          <h4>Download</h4>
+          <p>Export charts as images or data via the toolbar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Hide loading overlay when Tableau viz loads
+  const viz = document.getElementById('tableauDashboard');
+  const loadingOverlay = document.getElementById('embedLoading');
+
+  viz.addEventListener('firstinteractive', () => {
+    loadingOverlay.classList.add('hidden');
+  });
+
+  // Fallback: hide loading after 8 seconds regardless
+  setTimeout(() => {
+    loadingOverlay.classList.add('hidden');
+  }, 8000);
+
+  // Fullscreen toggle
+  function toggleFullscreen() {
+    const container = document.getElementById('embedContainer');
+    if (!document.fullscreenElement) {
+      container.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  }
+</script>
+{% endblock %}

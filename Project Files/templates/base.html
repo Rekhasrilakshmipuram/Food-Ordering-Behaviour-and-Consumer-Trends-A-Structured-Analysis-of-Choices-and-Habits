@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}FoodPulse Analytics{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}Interactive food delivery analytics dashboard powered by Tableau — explore delivery trends, restaurant performance & customer insights.{% endblock %}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍕</text></svg>" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <!-- Tableau Embedding API v3 -->
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <!-- ========== Navbar ========== -->
+  <nav class="navbar" id="mainNav">
+    <div class="container">
+      <a href="{{ url_for('index') }}" class="nav-brand">
+        <span class="brand-icon">🍕</span>
+        <span>FoodPulse</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+        <li><a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a></li>
+        <li><a href="{{ url_for('story') }}" class="{% if request.endpoint == 'story' %}active{% endif %}">Story</a></li>
+        <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
+        <li><a href="{{ url_for('dashboard') }}" class="nav-cta">Explore Data →</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== Main Content ========== -->
+  <main class="page-enter">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">© 2026 FoodPulse Analytics · Built with Flask & Tableau</p>
+      <ul class="footer-links">
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('story') }}">Story</a></li>
+        <li><a href="https://public.tableau.com/app/profile/yashwanthkumar.mallela" target="_blank" rel="noopener">Tableau Profile</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

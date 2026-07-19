@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}FoodPulse Analytics — Food Delivery Insights{% endblock %}
+{% block meta_desc %}Explore interactive food delivery analytics: delivery times, restaurant performance, customer trends, and revenue insights — all in one dashboard.{% endblock %}
+
+{% block content %}
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Live Analytics Dashboard
+      </div>
+
+      <h1 class="heading-display heading-xl">
+        Unlock <span class="text-gradient">Food Delivery</span><br/>Insights That Matter
+      </h1>
+
+      <p class="hero-subtitle">
+        Dive deep into delivery performance, customer behavior, and restaurant trends
+        with interactive Tableau visualizations — built for data-driven decisions.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">
+          🚀 View Dashboard
+        </a>
+        <a href="{{ url_for('story') }}" class="btn btn-secondary btn-lg">
+          📖 Explore Story
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item glass-card reveal">
+          <div class="stat-value text-gradient">1,898</div>
+          <div class="stat-label">Total Orders</div>
+        </div>
+        <div class="stat-item glass-card reveal">
+          <div class="stat-value text-gradient-accent">78</div>
+          <div class="stat-label">Restaurants</div>
+        </div>
+        <div class="stat-item glass-card reveal">
+          <div class="stat-value text-gradient">24 min</div>
+          <div class="stat-label">Avg Delivery Time</div>
+        </div>
+        <div class="stat-item glass-card reveal">
+          <div class="stat-value text-gradient-accent">4.5★</div>
+          <div class="stat-label">Avg Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Features ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">What You'll Discover</span>
+      <h2 class="heading-display heading-lg">Powerful Analytics at Your Fingertips</h2>
+      <p>Our interactive dashboard and data stories unlock actionable insights from thousands of food delivery orders.</p>
+    </div>
+
+    <div class="features-grid stagger">
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">📊</div>
+        <h3>Interactive Dashboard</h3>
+        <p>Explore fully interactive Tableau visualizations with filters, drill-downs, and real-time data exploration capabilities.</p>
+      </div>
+
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">📈</div>
+        <h3>Delivery Performance</h3>
+        <p>Analyze delivery times, order volumes, and peak hours to identify patterns and optimize operations.</p>
+      </div>
+
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">🍽️</div>
+        <h3>Restaurant Analytics</h3>
+        <p>Compare restaurant ratings, cuisine popularity, and revenue metrics across all partner restaurants.</p>
+      </div>
+
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">📖</div>
+        <h3>Data Storytelling</h3>
+        <p>Follow guided data narratives that walk you through key insights and trends in the food delivery ecosystem.</p>
+      </div>
+
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">🔍</div>
+        <h3>Customer Insights</h3>
+        <p>Understand ordering patterns, customer preferences, and satisfaction drivers from the data.</p>
+      </div>
+
+      <div class="feature-card glass-card reveal">
+        <div class="feature-icon">⚡</div>
+        <h3>Real-time Filters</h3>
+        <p>Slice and dice data by cuisine, time period, location, and more with responsive Tableau filters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section" id="cta">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Get Started</span>
+      <h2 class="heading-display heading-lg">Ready to Explore the Data?</h2>
+      <p>Jump into our interactive dashboard or follow the guided data story to uncover food delivery insights.</p>
+    </div>
+    <div class="hero-actions reveal">
+      <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">🚀 Open Dashboard</a>
+      <a href="{{ url_for('story') }}" class="btn btn-secondary btn-lg">📖 Read the Story</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
