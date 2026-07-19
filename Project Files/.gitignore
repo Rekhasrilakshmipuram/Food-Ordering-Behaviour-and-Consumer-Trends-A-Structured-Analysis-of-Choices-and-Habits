@@ -1,0 +1,26 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tableau temp files
+~*.twbr
+*.twbx
+*.twb
+
+# Data files (optional — uncomment if you don't want to push CSV)
+# *.csv
